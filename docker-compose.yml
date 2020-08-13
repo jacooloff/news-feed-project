@@ -1,0 +1,27 @@
+version: "3.7"
+volumes:
+  postgresql_data:
+    driver: local
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: ./docker/python/Dockerfile
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+       - ./source/newsfeedproject:/usr/src/app
+    ports:
+      - "8000:8000"
+    env_file:
+      ./.env.dev
+    depends_on:
+      - db
+  db:
+    build: ./docker/postgresql
+    environment:
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_USER=user
+      - POSTGRES_DB=news_feed
+    volumes:
+      - postgresql_data:/var/lib/postgresql/data/
