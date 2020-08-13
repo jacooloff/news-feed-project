@@ -1,0 +1,36 @@
+{% extends 'feed/base.html' %}
+{% block content %}
+          <div class="noveltys">  <!-- Column novelty Holder-->
+            {% if user.is_authenticated %}
+            <a href="{% url 'novelty_new' %}" class="top-menu">
+              <span class="glyphicon glyphicon-plus"></span>
+            </a>
+            {% endif %}
+            {% for novelty in noveltys%}
+
+            <div class="novelty">
+
+              <div class="text-holder col-3-5">
+                <div class="novelty-title">
+                  <a href="{% url 'novelty_detail' pk=novelty.pk %}">
+                    {{ novelty.title }}
+                  </a>
+                </div>
+                {% if user.is_authenticated %}
+                <div class="novelty-title">
+                  <a href="{% url 'novelty_delete' pk=novelty.pk %}">
+                    <span class="glyphicon glyphicon-trash"></span>
+                  </a>
+                </div>
+                {% endif %}
+                <div class="novelty-published_date">
+                  {{ novelty.published_date }}
+                </div>
+                <div class="novelty-text">{{ novelty.text }}</div>
+              </div><!--End of Text Holder-->
+
+            </div><!--End of novelty Item-->
+
+            {% endfor %}
+          </div><!--end of noveltys-->
+{% endblock %}
