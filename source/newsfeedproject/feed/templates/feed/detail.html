@@ -1,0 +1,16 @@
+{% extends 'feed/base.html' %}
+{% block content %}
+  <div class="novelty">
+    {% if user.is_authenticated %}
+    <a class="btn btn-default" href="{% url 'novelty_edit' pk=novelty.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+    {% endif %}
+    <div class="text-holder col-3-5">
+      <div class="novelty-title"><a href="{% url 'novelty_detail' pk=novelty.pk %}">{{ novelty.title }}</a></div>
+      <div class="novelty-published_date">
+        {{ novelty.published_date }}
+      </div>
+      <div class="novelty-text">{{ novelty.text }}</div>
+    </div><!--End of Text Holder-->
+
+  </div><!--End of novelty Item-->
+{% endblock %}
