@@ -1,0 +1,21 @@
+.content{
+  background: black;
+  align: center;
+  width: 50%;
+  margin: 5 auto;
+  display: flex;
+  flex-direction: column-reverse;
+}
+.novelty{
+  background: #D3D3D3;
+  
+}
+.novelty-title{
+  font-size: 25px;
+}
+.novelty-published_date{
+  float: right;
+}
+.novelty-text{
+  font-size: 20px;
+}
