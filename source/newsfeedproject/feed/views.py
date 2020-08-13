@@ -33,3 +33,8 @@ def novelty_edit(request, pk):
     else:
         form = NoveltyFormForEdit(instance=novelty)
     return render(request, 'feed/edit.html', {'form':form})
+
+def novelty_delete(request, pk):
+    novelty = get_object_or_404(Novelty, pk=pk)
+    novelty.delete()
+    return redirect('feed')
