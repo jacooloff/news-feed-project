@@ -14,7 +14,7 @@ COPY ./source/requirements.txt .
 RUN pip install -r requirements.txt
 
 # copy project
-COPY source/newsfeedproject .
+COPY ./source/newsfeedproject .
 
 # copy entrypoint.sh
 COPY ./docker/entrypoint.sh .
